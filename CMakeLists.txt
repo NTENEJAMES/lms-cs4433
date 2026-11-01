@@ -16,7 +16,11 @@ add_library(lms_core
   src/Greeter.cpp
   src/Database.cpp
   src/LateDays.cpp
-  src/TenPercentPerDayPolicy.cpp)
+  src/TenPercentPerDayPolicy.cpp
+  src/User.cpp
+  src/Roles.cpp
+  src/Assignment.cpp
+  src/Submission.cpp)
 target_include_directories(lms_core PUBLIC src)
 target_link_libraries(lms_core PUBLIC sqlite3_lib)
 
@@ -36,7 +40,10 @@ add_executable(lms_tests
   tests/test_greeter.cpp
   tests/test_database.cpp
   tests/test_penalty.cpp
-  tests/test_schema.cpp)
+  tests/test_schema.cpp
+  tests/test_users.cpp
+  tests/test_assignment.cpp
+  tests/test_submission.cpp)
 target_link_libraries(lms_tests PRIVATE lms_core GTest::gtest_main)
 target_compile_definitions(lms_tests PRIVATE LMS_SCHEMA_PATH="${CMAKE_SOURCE_DIR}/db/schema.sql")
 include(GoogleTest)
