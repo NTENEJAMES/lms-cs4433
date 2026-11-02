@@ -17,7 +17,11 @@ public:
     Database& operator=(const Database&) = delete;
 
     void execute(const std::string& sql);         // for schema scripts
+    void executeFile(const std::string& path);    // run an .sql file (e.g. db/schema.sql)
+    int  countRows(const std::string& sql);       // runs a SELECT COUNT(*) query (for tests and checks)
     sqlite3* handle() const { return db_; }
+    long long lastInsertId() const { return sqlite3_last_insert_rowid(db_); }
+    int changes() const { return sqlite3_changes(db_); }
 
 private:
     sqlite3* db_ = nullptr;
