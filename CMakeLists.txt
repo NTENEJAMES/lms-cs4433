@@ -43,7 +43,10 @@ add_library(lms_core
   src/SqliteUserRepository.cpp
   src/SqliteSubmissionRepository.cpp
   src/PasswordHasher.cpp
-  src/AuthService.cpp)
+  src/AuthService.cpp
+  src/SqliteAssignmentRepository.cpp
+  src/SqliteCourseRepository.cpp
+  src/SubmissionService.cpp)
 target_include_directories(lms_core PUBLIC src)
 target_link_libraries(lms_core PUBLIC sqlite3_lib argon2_lib)
 if(WIN32)
@@ -72,7 +75,9 @@ add_executable(lms_tests
   tests/test_submission.cpp
   tests/test_timeutil.cpp
   tests/test_repositories.cpp
-  tests/test_auth.cpp)
+  tests/test_auth.cpp
+  tests/test_assignment_repository.cpp
+  tests/test_submission_service.cpp)
 target_link_libraries(lms_tests PRIVATE lms_core GTest::gtest_main)
 target_compile_definitions(lms_tests PRIVATE LMS_SCHEMA_PATH="${CMAKE_SOURCE_DIR}/db/schema.sql")
 include(GoogleTest)

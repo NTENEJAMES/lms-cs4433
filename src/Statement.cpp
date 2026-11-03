@@ -18,6 +18,9 @@ Statement& Statement::bindText(int i, const std::string& v) {
     check(sqlite3_bind_text(stmt_, i, v.c_str(), static_cast<int>(v.size()), SQLITE_TRANSIENT));
     return *this;
 }
+Statement& Statement::bindOptionalInt(int i, std::optional<int> v) {
+    return v ? bindInt(i, *v) : bindNull(i);
+}
 Statement& Statement::bindOptionalDouble(int i, std::optional<double> v) {
     return v ? bindDouble(i, *v) : bindNull(i);
 }

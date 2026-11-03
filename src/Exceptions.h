@@ -13,3 +13,9 @@ class SecurityException : public std::runtime_error {
 public:
     using std::runtime_error::runtime_error;
 };
+
+// Thrown when a user tries to do something their role or enrolment does not allow.
+class AccessDeniedException : public std::runtime_error {
+public:
+    using std::runtime_error::runtime_error;
+};

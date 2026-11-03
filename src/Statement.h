@@ -16,6 +16,7 @@ public:
     Statement& bindText(int index, const std::string& value);
     Statement& bindDouble(int index, double value);
     Statement& bindNull(int index);
+    Statement& bindOptionalInt(int index, std::optional<int> value);
     Statement& bindOptionalDouble(int index, std::optional<double> value);
     Statement& bindOptionalText(int index, const std::optional<std::string>& value);
 
